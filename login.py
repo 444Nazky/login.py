@@ -10,13 +10,14 @@ import getpass
 import hashlib
 import time
 from colorama import init, Fore, Style
+import subprocess
+import sys
 
 init(autoreset=True)
 
 USERNAME = "Nazky"
 PASSWORD_HASH = hashlib.sha256("t94na52j444".encode()).hexdigest()
 
-# ✅ Fallback-safe blue for all terminals
 BLUE = "\033[38;5;75m"
 RESET = "\033[0m"
 
@@ -89,16 +90,37 @@ def show_mac_screen():
     print(RESET)
 
 
+def close_terminal_app():
+    """Close the macOS Terminal app entirely."""
+    if platform.system() == "Darwin":
+        # 🧠 This AppleScript command closes all terminal windows gracefully
+        subprocess.call(["osascript", "-e", 'tell application "Terminal" to quit'])
+    else:
+        sys.exit(0)
+
+
 def login():
     print()
     user = input(BLUE + "login as: " + RESET)
     pwd = getpass.getpass(BLUE + "Password: " + RESET)
+
     if user == USERNAME and hashlib.sha256(pwd.encode()).hexdigest() == PASSWORD_HASH:
-        slow_print(Fore.GREEN + "\nAccess Granted ✅ Welcome, " + user + "!")
+        slow_print(Fore.GREEN + "\nAccess Granted ✅ Welcome, " + user + "!" + RESET)
         time.sleep(0.8)
-        dashboard()
+
+        # Countdown before closing
+        print(Fore.YELLOW + "\nClosing Terminal in 3 seconds..." + RESET)
+        for i in range(3, 0, -1):
+            print(Fore.YELLOW + f"Closing in {i}..." + RESET)
+            time.sleep(1)
+
+        print(Fore.RED + "\nGoodbye 👋" + RESET)
+        time.sleep(0.8)
+
+        # 🧩 Run AppleScript to quit Terminal
+        close_terminal_app()
     else:
-        print(Fore.RED + "\nLogin incorrect.\n")
+        print(Fore.RED + "\nLogin incorrect.\n" + RESET)
         time.sleep(1.5)
         main_menu()
 
@@ -159,9 +181,9 @@ def main_menu():
         clear()
         slow_print(Fore.GREEN + "Goodbye, " + USERNAME + "! 👋")
         time.sleep(0.6)
-        exit(0)
+        close_terminal_app()
     else:
-        print(Fore.RED + "\nInvalid choice.\n")
+        print(Fore.RED + "\nInvalid choice.\n" + RESET)
         time.sleep(1.5)
         main_menu()
 
