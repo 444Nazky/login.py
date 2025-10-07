@@ -109,7 +109,7 @@ def login():
         time.sleep(0.8)
 
         # Countdown before closing
-        print(Fore.YELLOW + "\nClosing Terminal in 3 seconds..." + RESET)
+        print(Fore.YELLOW + "\nPreparing..." + RESET)
         for i in range(3, 0, -1):
             print(Fore.YELLOW + f"Closing in {i}..." + RESET)
             time.sleep(1)
@@ -145,7 +145,7 @@ def dashboard():
 
 def about():
     clear()
-    print(BLUE + Style.BRIGHT + "\n🍎 About This Mac\n" + RESET)
+    print(BLUE + Style.BRIGHT + "\nAbout This Mac\n" + RESET)
     print(Fore.WHITE + "------------------------------")
     print(BLUE + "macOS Version: " + Fore.WHITE + "Sequoia 15.0 (24A335)")
     print(BLUE + "Mac Model: " + Fore.WHITE + "MacBook Air (M4, 2025)")
@@ -176,7 +176,7 @@ def main_menu():
     elif choice == "2":
         about()
     elif choice == "3":
-        slow_print(Fore.YELLOW + "\nShutting down macOS Secure Terminal... 🍏")
+        slow_print(Fore.YELLOW + "\nPreparing... ")
         time.sleep(1)
         clear()
         slow_print(Fore.GREEN + "Goodbye, " + USERNAME + "! 👋")
