@@ -63,7 +63,7 @@ def show_mac_screen():
         BLUE + Style.BRIGHT +
         "nazky@MacBook-Air\n" + RESET +
         Fore.WHITE + "--------------------------\n" +
-        BLUE + "OS: " + Fore.WHITE + "macOS Sequoia 15.0 (24A335)\n" +
+        BLUE + "OS: " + Fore.WHITE + "macOS Tahoe 26.0 (25A354)\n" +
         BLUE + "Host: " + Fore.WHITE + "MacBook Air (M4, 2025)\n" +
         BLUE + "Kernel: " + Fore.WHITE + platform.release() + "\n" +
         BLUE + "Shell: " + Fore.WHITE + os.getenv("SHELL", "zsh") + "\n" +
@@ -111,7 +111,7 @@ def login():
         # Countdown before closing
         print(Fore.YELLOW + "\nPreparing..." + RESET)
         for i in range(3, 0, -1):
-            print(Fore.YELLOW + f"Closing in {i}..." + RESET)
+            print(Fore.YELLOW + f"Preparing in {i}..." + RESET)
             time.sleep(1)
 
         print(Fore.RED + "\nGoodbye 👋" + RESET)
@@ -147,7 +147,7 @@ def about():
     clear()
     print(BLUE + Style.BRIGHT + "\nAbout This Mac\n" + RESET)
     print(Fore.WHITE + "------------------------------")
-    print(BLUE + "macOS Version: " + Fore.WHITE + "Sequoia 15.0 (24A335)")
+    print(BLUE + "macOS Version: " + Fore.WHITE + "Tahoe 26.0 (25A354)")
     print(BLUE + "Mac Model: " + Fore.WHITE + "MacBook Air (M4, 2025)")
     print(BLUE + "Chip: " + Fore.WHITE + "Apple M4")
     print(BLUE + "Memory: " + Fore.WHITE + "16 GB Unified Memory")
